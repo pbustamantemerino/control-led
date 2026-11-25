@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
-  <title data-id="th-modified">Control LED Bluefy (RGB + Brillo)</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Control LED Bluefy (RGB + Brillo)</title>
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
@@ -112,7 +112,7 @@
 </head>
 <body>
 
-  <h2>💡 Control LEDs Paul</h2>
+  <h2>💡 Control Zengge LED</h2>
   <div id="estado">Listo para conectar</div>
 
   <div class="panel">
@@ -136,7 +136,7 @@
         <span style="color:#ff6b6b;">Red (Rojo)</span>
         <span id="valR">0</span>
       </div>
-      <input type="range" id="sliderR" min="0" max="255" value="0" oninput="actualizarColor()" >
+      <input type="range" id="sliderR" min="0" max="255" value="0" oninput="actualizarColor()" />
     </div>
 
     <!-- Slider Green -->
@@ -145,7 +145,7 @@
         <span style="color:#51cf66;">Green (Verde)</span>
         <span id="valG">136</span>
       </div>
-      <input type="range" id="sliderG" min="0" max="255" value="136" oninput="actualizarColor()" >
+      <input type="range" id="sliderG" min="0" max="255" value="136" oninput="actualizarColor()" />
     </div>
 
     <!-- Slider Blue -->
@@ -154,7 +154,7 @@
         <span style="color:#339af0;">Blue (Azul)</span>
         <span id="valB">255</span>
       </div>
-      <input type="range" id="sliderB" min="0" max="255" value="255" oninput="actualizarColor()" >
+      <input type="range" id="sliderB" min="0" max="255" value="255" oninput="actualizarColor()" />
     </div>
 
     <!-- Slider Brillo -->
@@ -163,7 +163,7 @@
         <span style="color:#facc15;">☀️ Brillo</span>
         <span id="valBrillo">100%</span>
       </div>
-      <input type="range" id="sliderBrillo" min="0" max="100" value="100" oninput="actualizarColor()" >
+      <input type="range" id="sliderBrillo" min="0" max="100" value="100" oninput="actualizarColor()" />
     </div>
   </div>
 
@@ -290,12 +290,12 @@
 
       // Aplicar escala de brillo a los valores RGB (0.0 a 1.0)
       const factor = brillo / 100;
-      const rFinal = Math.round(r * factor);
-      const gFinal = Math.round(g * factor);
+      const rFinal = Math.round(g * factor); //cambia a GRB
+      const gFinal = Math.round(r * factor);
       const bFinal = Math.round(b * factor);
 
       // Actualizar barra de vista previa
-      document.getElementById('preview').style.background = `rgb(${rFinal}, ${gFinal}, ${bFinal})`;
+      document.getElementById('preview').style.background = `rgb(${gFinal}, ${rFinal}, ${bFinal})`; //aqui tambien GRB
 
       // Evitar saturar el Bluetooth de Bluefy al deslizar rápido (máx. 1 trama cada 50ms)
       const ahora = Date.now();
@@ -308,3 +308,4 @@
   </script>
 </body>
 </html>
+
